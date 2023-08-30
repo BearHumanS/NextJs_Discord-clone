@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="ko">
         <body className={font.className}>{children}</body>
       </html>
     </ClerkProvider>
