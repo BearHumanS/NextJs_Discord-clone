@@ -18,6 +18,7 @@ import {
   User,
   UserPlus,
 } from "lucide-react";
+import { useModal } from "@/hooks/use-modal-store";
 
 interface ServerHeaderProps {
   server: ServerWithMembersWithProfiles;
@@ -25,6 +26,8 @@ interface ServerHeaderProps {
 }
 
 export const ServerHeader = ({ server, role }: ServerHeaderProps) => {
+  const { onOpen } = useModal();
+
   const isAdmin = role === MemberRole.ADMIN;
   const isModerator = isAdmin || role === MemberRole.MODERATOR;
 
@@ -39,7 +42,10 @@ export const ServerHeader = ({ server, role }: ServerHeaderProps) => {
           <ChevronDown className="h-5 w-5 ml-auto" />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 text-xs font-medium text-black dark:text-neutral-400 space-y-[2px]">
+      <DropdownMenuContent
+        onClick={() => onOpen("invite", { server })}
+        className="w-56 text-xs font-medium text-black dark:text-neutral-400 space-y-[2px]"
+      >
         {isModerator && (
           <DropdownMenuItem className="text-indigo-600 dark:text-indigo-400 px-3 pt-2 text-sm cursor-pointer">
             초대하기
