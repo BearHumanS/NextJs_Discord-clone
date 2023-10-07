@@ -42,6 +42,8 @@ const ChannelIdPage = async ({ params }: ChannelIdPageProps) => {
         serverId={channel.serverId}
         type="channel"
       />
+      <div className="flex-1">message</div>
+      {/* <ChatInput /> */}
     </div>
   );
 };

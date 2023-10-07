@@ -1,4 +1,4 @@
-import { getOrcCreateConversation } from "@/src/app/lib/conversation";
+import { getOrCreateConversation } from "@/src/app/lib/conversation";
 import { currentProfile } from "@/src/app/lib/current-profile";
 import { db } from "@/src/app/lib/db";
 import { ChatHeader } from "@/src/components/chat/chat-header";
@@ -33,7 +33,7 @@ const MemberIdPage = async ({ params }: MemberIdPageProps) => {
     return redirect("/");
   }
 
-  const conversation = await getOrcCreateConversation(
+  const conversation = await getOrCreateConversation(
     currentMember.id,
     params.memberId
   );
