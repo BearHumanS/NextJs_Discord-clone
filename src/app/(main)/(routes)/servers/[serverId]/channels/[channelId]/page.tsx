@@ -1,6 +1,7 @@
 import { currentProfile } from "@/src/app/lib/current-profile";
 import { db } from "@/src/app/lib/db";
 import { ChatHeader } from "@/src/components/chat/chat-header";
+import { ChatInput } from "@/src/components/chat/chat-input";
 import { redirectToSignIn } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
@@ -43,7 +44,15 @@ const ChannelIdPage = async ({ params }: ChannelIdPageProps) => {
         type="channel"
       />
       <div className="flex-1">message</div>
-      {/* <ChatInput /> */}
+      <ChatInput
+        name={channel.name}
+        type="channel"
+        apiUrl="/api/sockey/messages"
+        query={{
+          channelId: channel.id,
+          serverId: channel.serverId,
+        }}
+      />
     </div>
   );
 };
